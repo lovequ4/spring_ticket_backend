@@ -1,5 +1,6 @@
 package com.example.backend.Services;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -53,7 +54,7 @@ public class TicketServiceImpl implements TicketService {
 
         TicketCategory ticketcategory = ticketcategoryRepository.findByCategoryName(ticketDto.getCategoryname());
         if (ticketcategory == null) {
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("TicketCategory not found.");
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("TicketCategory not found.");
         }
 
         int ticketPrice = ticketcategory.getPrice(); 
@@ -64,7 +65,7 @@ public class TicketServiceImpl implements TicketService {
         Ticket ticket = new Ticket();
         ticket.setConcert(concert);
         ticket.setUser(user);
-        ticket.setPurchaseDate(ticketDto.getPurchaseDate());
+        ticket.setPurchaseDate(LocalDateTime.now());
         ticket.setCategory(ticketcategory);
         ticket.setQuantity(ticketDto.getQuantity());
         ticket.setTotalPrice(totalPrice);
