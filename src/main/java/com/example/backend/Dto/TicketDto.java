@@ -2,6 +2,8 @@ package com.example.backend.Dto;
 
 import java.time.LocalDateTime;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
@@ -22,8 +24,8 @@ public class TicketDto {
     @NotNull(message = "user not be empty")
     private Long user;
     
-    @NotNull
-    @NotEmpty(message = "purchaseDate not be empty")
+    @NotNull(message = "date not be empty")
+    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
     private LocalDateTime purchaseDate;
 
     @NotNull(message = "quantity not be empty")
