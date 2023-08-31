@@ -2,8 +2,8 @@ package com.example.backend.Dto;
 
 import java.util.Date;
 
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Service;
-
 
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
@@ -35,12 +35,11 @@ public class ConcertDto
     @NotEmpty(message = "artist should not be empty")
     private String artist ;
 
-    @NotNull
-    @NotEmpty(message = "date not be empty")
+    @NotNull(message = "date not be empty")
+    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
     private Date date;
 
-    @NotNull
-    @NotEmpty(message = "ticketQuantity not be empty")
+    @NotNull(message = "ticketQuantity not be empty")
     private int ticketQuantity;
 
 }
