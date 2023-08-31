@@ -46,4 +46,7 @@ public class Concert {
 
     @Column(nullable = false)
     private int ticketQuantity;
+
+    @Column(nullable = false)
+    private String concertImg;
 }
