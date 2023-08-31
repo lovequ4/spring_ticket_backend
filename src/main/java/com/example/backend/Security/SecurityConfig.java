@@ -25,15 +25,17 @@ public class SecurityConfig {
             .authorizeHttpRequests(auth -> auth
             .requestMatchers(
                 "/api/**",
+                "/concertImg/*",
                 "/api/auth/signup",
                 "/api/auth/login",
                 "/swagger-ui/**",
                 "/v3/api-docs/**"
-                ).permitAll()
-            .anyRequest()
-            .authenticated()
+                )
+                .permitAll()
+                .anyRequest()
+                .authenticated()
             );
-
+            
         return http.build();    
     }
 }
